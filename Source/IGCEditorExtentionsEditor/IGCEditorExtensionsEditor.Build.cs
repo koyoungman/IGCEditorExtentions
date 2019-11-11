@@ -20,8 +20,9 @@ public class IGCEditorExtensionsEditor : ModuleRules
                 "LevelEditor",
                 "IGCEditorExtensions",
                 "Engine",
-                "AdvancedPreviewScene"
-			}
+                "AdvancedPreviewScene",
+                "EditorStyle"
+            }
 		);
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
