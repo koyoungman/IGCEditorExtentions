@@ -3,6 +3,7 @@
 #include "IGCEditor.h"
 #include "IGC.h"
 #include "IGCExtensionStyle.h"
+#include "SIGCViewport.h"
 
 #include "PropertyEditorModule.h"
 
@@ -26,6 +27,10 @@ void FIGCEditor::InitIGCEditor(const EToolkitMode::Type Mode, const TSharedPtr<c
 	FPropertyEditorModule& PropertyEditorModule = FModuleManager::GetModuleChecked<FPropertyEditorModule>("PropertyEditor");
 	const FDetailsViewArgs DetailsViewArgs(bIsUpdatable, bIsLockable, true, FDetailsViewArgs::ObjectsUseNameArea, false);
 	DetailsView = PropertyEditorModule.CreateDetailView(DetailsViewArgs);
+
+	Viewport = SNew(SIGCViewport)
+		.ParentIGCEditor(SharedThis(this))
+		.ObjectToEdit(IGCObject);
 
 	// 툴바가 들어갈 기본 레이아웃 설계.
 	const TSharedRef<FTabManager::FLayout> EditorDefaultLayout = FTabManager::NewLayout("IGCEditor_Layout_v2")
@@ -75,7 +80,10 @@ FIGCEditor::~FIGCEditor()
 TSharedRef<SDockTab> FIGCEditor::SpawnTab_Viewport(const FSpawnTabArgs& Args)
 {
 	check(Args.GetTabId() == ViewportTabId);
-	return SNew(SDockTab);
+	return SNew(SDockTab)
+		[
+			Viewport.ToSharedRef()
+		];
 }
 
 TSharedRef<SDockTab> FIGCEditor::SpawnTab_Detail(const FSpawnTabArgs& Args)
