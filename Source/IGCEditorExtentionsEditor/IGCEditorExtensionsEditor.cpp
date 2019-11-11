@@ -2,7 +2,7 @@
 
 #include "IGCEditorExtensionsEditor.h"
 
-IMPLEMENT_MODULE( FIGCEditorExtensionsEditor, "IGCEditorExtensionsEditor" );
+IMPLEMENT_MODULE( FIGCEditorExtensionsEditor, IGCEditorExtensionsEditor );
 
 void FIGCEditorExtensionsEditor::StartupModule()
 {
