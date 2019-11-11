@@ -15,12 +15,13 @@ public class IGCEditorExtensionsEditor : ModuleRules
 				"CoreUObject",
                 "SlateCore",
                 "Slate",
-                "UnrealEd",
+				"InputCore",
+				"UnrealEd",
                 "LevelEditor",
                 "IGCEditorExtensions",
                 "Engine",
                 "AdvancedPreviewScene"
-            }
+			}
 		);
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
